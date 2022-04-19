@@ -8,11 +8,6 @@ def log_line_file(path, line):
         file.write(line + '\n')
 
 
-def pretty_print_dict(d):
-    for key in d.keys():
-        print(f"{key}: {d[key]}")
-
-
 def sanitize_line(line):
     """
     Возвращает строку в нижнем регистре, очищенную от всех небуквенных символов, кроме разделителей (пробелов, переносов строки и т.п.)

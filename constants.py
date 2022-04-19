@@ -14,6 +14,7 @@ FILE_WRI = r'C:\Users\Максим\Desktop\Work\Word_stat\CSV\WRITE_TIME.txt'
 FILE_TOT = r'C:\Users\Максим\Desktop\Work\Word_stat\CSV\TOTAL_TIME.txt'
 FILE_WFL = r'C:\Users\Максим\Desktop\Work\Word_stat\CSV\WORDS_NUM_IN_FILE.txt'
 FILE_WTD = r'C:\Users\Максим\Desktop\Work\Word_stat\CSV\WORDS_NUM_IN_DICT.txt'
+FILE_RUS_WORDS = r'C:\Users\Максим\Desktop\Work\Word_stat\russian_total_utf8.txt'
 
 
 CSV_DELIMITER = ","

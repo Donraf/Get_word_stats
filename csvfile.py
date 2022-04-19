@@ -1,9 +1,10 @@
 import re
 import os
-from collections import defaultdict
-from constants import *
-from operator import itemgetter
 import time
+from collections import defaultdict
+from operator import itemgetter
+
+from constants import *
 from utils import log_line_file
 
 
@@ -11,7 +12,7 @@ class CsvHandler:
     search_time = 0
     write_time = 0
 
-    def check_for_duplicate(self, file, word_dict):
+    def _check_for_duplicate(self, file, word_dict):
         words = []
         line_num = 0
         for line in file:
@@ -37,7 +38,7 @@ class CsvHandler:
     def add_dict(self, file_path, d: defaultdict):
         start_time = time.time()
         with open(file_path, "r", encoding=ENCODING) as file:
-            words = self.check_for_duplicate(file, d)
+            words = self._check_for_duplicate(file, d)
         words = sorted(words, key=itemgetter(FIRST_OCCURRENCE, WORD_NUM_LINE, WORD_NUM_IN_DOC))
         end_search_time = time.time()
         log_line_file(FILE_DUP, str(end_search_time - start_time))

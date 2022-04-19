@@ -1,12 +1,15 @@
 import re
 import os
 import time
+import codecs
 from collections import defaultdict
+
+from chardet.universaldetector import UniversalDetector
+
 from csvfile import CsvHandler
 from constants import *
 from utils import *
-from chardet.universaldetector import UniversalDetector
-import codecs
+
 
 csv_handler = CsvHandler()
 list_text_dir = os.listdir(TEXT_DIR)
@@ -67,7 +70,6 @@ for text_file_name in list_text_dir:
                 doc_word_dict[key] += line_word_dict[key]
         log_line_file(FILE_WFL, str(len(doc_word_dict.keys())))
         print(len(doc_word_dict.keys()))
-        # pretty_print_dict(doc_word_dict)
     csv_handler.add_dict(CSV_FILE, doc_word_dict)
 
     with open(CSV_FILE, 'r', encoding='utf-8') as check_file:
