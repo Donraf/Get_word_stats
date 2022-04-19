@@ -45,10 +45,10 @@ for text_file_name in list_text_dir:
         print(det_result)
         if det_result != ENCODING:
             wrong_encoding = det_result
-            with codecs.open(text_file_path, "rU", wrong_encoding) as wr_enc_file:
-                with codecs.open(temp_text_file_path, "w+", ENCODING) as cor_enc_file:
-                    for line in wr_enc_file:
-                        cor_enc_file.write(line)
+            with codecs.open(text_file_path, "rU", wrong_encoding) as wr_enc_file, \
+                    codecs.open(temp_text_file_path, "w+", ENCODING) as cor_enc_file:
+                for line in wr_enc_file:
+                    cor_enc_file.write(line)
             text_file_path = temp_text_file_path
     except:
         defined_encodings["Error"] += 1
