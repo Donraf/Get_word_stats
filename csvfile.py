@@ -9,15 +9,6 @@ from utils import log_line_file
 
 
 class CsvHandler:
-    def __init__(self, rus_set_path=FILE_RUS_WORDS):
-        if rus_set_path:
-            self.rus_words_set = set()
-            with open(rus_set_path, 'r', encoding=ENCODING) as file:
-                for line in file:
-                    self.rus_words_set.add(line.strip().lower())
-        else:
-            self.rus_words_set = set()
-
     _search_time = 0
     _write_time = 0
 
@@ -25,8 +16,7 @@ class CsvHandler:
         words = []
         for line_num, line in enumerate(csv_file):
             word_csv = re.match(r'\w+', line).group()
-            if word_csv in words_in_doc and \
-                    word_csv in self.rus_words_set:
+            if word_csv in words_in_doc:
                 words.append({
                     WORD: word_csv,
                     WORD_NUM_IN_DOC: words_in_doc[word_csv],
