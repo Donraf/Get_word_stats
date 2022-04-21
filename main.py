@@ -79,4 +79,3 @@ for doc_name in docs_list:
 for temp_enc_file in os.listdir(TEMP_ENCODING_DIR):
     os.remove(os.path.join(TEMP_ENCODING_DIR, temp_enc_file))
 # --- END Delete temp files
-print(f"Total encoding time {total_enc_time}")

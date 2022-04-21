@@ -1,7 +1,5 @@
 CSV_FILE = r"C:\Users\Максим\Desktop\Work\Word_stat\word_stat.txt"
 TEXT_DIR = r"C:\Users\Максим\Desktop\Texts_ALL"
-# TEXT_DIR = r"C:\Users\Максим\Desktop\Texts_To_Stat"
-PROCESSED_TEXT_DIR = r""
 ENCODING = "utf-8"
 TEMP_CSV_DIR = r"C:\Users\Максим\Desktop\Work\Word_stat\Temp\CSV"
 TEMP_ENCODING_DIR = r"C:\Users\Максим\Desktop\Work\Word_stat\Temp\TextEncoding"
