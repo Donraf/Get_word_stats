@@ -5,7 +5,6 @@ from collections import defaultdict
 from operator import itemgetter
 
 from constants import *
-from utils import log_line_file
 
 
 class CsvHandler:

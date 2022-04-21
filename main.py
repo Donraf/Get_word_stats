@@ -13,8 +13,6 @@ from utils import *
 csv_handler = CsvHandler()
 docs_list = os.listdir(TEXT_DIR)
 
-log_line_file(FILE_WTD, '0')
-
 file_counter = 0
 while len(docs_list) > 0:
     start_file_proc = time.time()
@@ -40,28 +38,28 @@ while len(docs_list) > 0:
 
         doc_path = os.path.join(TEXT_DIR, doc_name)
 
-        detector = UniversalDetector()
-        enc_start = time.time()
-        try:
-            with open(doc_path, "rb") as doc:
-                for line in doc:
-                    detector.feed(line)
-                    if detector.done:
-                        break
-            detector.close()
-            doc_encoding = detector.result["encoding"]
-            print(doc_encoding)
-            if doc_encoding != ENCODING:
-                enc_doc_path = os.path.join(TEMP_ENCODING_DIR, doc_name)
-                with codecs.open(doc_path, "rU", doc_encoding) as old_enc_doc, \
-                        codecs.open(enc_doc_path, "w+", ENCODING) as new_enc_doc:
-                    for line in old_enc_doc:
-                        new_enc_doc.write(line)
-                doc_path = enc_doc_path
-        except:
+        if CHECK_ENCODING:
+            enc_start = time.time()
+            detector = UniversalDetector()
+            try:
+                with open(doc_path, "rb") as doc:
+                    for line in doc:
+                        detector.feed(line)
+                        if detector.done:
+                            break
+                detector.close()
+                doc_encoding = detector.result["encoding"]
+                if doc_encoding != ENCODING:
+                    enc_doc_path = os.path.join(TEMP_ENCODING_DIR, doc_name)
+                    with codecs.open(doc_path, "rU", doc_encoding) as old_enc_doc, \
+                            codecs.open(enc_doc_path, "w+", ENCODING) as new_enc_doc:
+                        for line in old_enc_doc:
+                            new_enc_doc.write(line)
+                    doc_path = enc_doc_path
+            except:
+                enc_time += time.time() - enc_start
+                continue
             enc_time += time.time() - enc_start
-            continue
-        enc_time += time.time() - enc_start
 
         with open(doc_path, "r", encoding=ENCODING) as doc:
             for line in doc:
