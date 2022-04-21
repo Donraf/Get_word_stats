@@ -4,6 +4,7 @@ ENCODING = "utf-8"
 TEMP_CSV_DIR = r"C:\Users\Максим\Desktop\Work\Word_stat\Temp\CSV"
 TEMP_ENCODING_DIR = r"C:\Users\Максим\Desktop\Work\Word_stat\Temp\TextEncoding"
 
+BATCH_SIZE = 100
 
 # ----- Files
 FILE_ENC = r'C:\Users\Максим\Desktop\Work\Word_stat\CSV\ENCODING_TIME.txt'

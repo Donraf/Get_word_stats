@@ -9,9 +9,6 @@ from utils import log_line_file
 
 
 class CsvHandler:
-    _search_time = 0
-    _write_time = 0
-
     def _check_for_duplicate(self, csv_file, words_in_doc):
         words = []
         for line_num, line in enumerate(csv_file):
@@ -41,14 +38,12 @@ class CsvHandler:
         words = sorted(words, key=itemgetter(FIRST_OCCURRENCE, WORD_NUM_LINE, WORD_NUM_IN_DOC))
 
         end_search_time = time.time()
-        log_line_file(FILE_DUP, str(end_search_time - start_time))
-        self._search_time += end_search_time - start_time
 
         self._add_record(csv_path, words)
 
         end_write_time = time.time()
-        log_line_file(FILE_WRI, str(end_write_time - end_search_time))
-        self._write_time += end_write_time - end_search_time
+
+        return end_search_time - start_time, end_write_time - end_search_time
 
     def _add_record(self, csv_path, words):
         new_csv_path = os.path.join(TEMP_CSV_DIR, r"temp_csv.txt")
