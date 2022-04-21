@@ -6,7 +6,7 @@ TEMP_ENCODING_DIR = r"C:\Users\Максим\Desktop\Work\Word_stat\Temp\TextEnco
 
 CHECK_ENCODING = False
 
-BATCH_SIZE = 100
+BATCH_SIZE = 1000
 
 # ----- Files
 FILE_ENC = r'C:\Users\Максим\Desktop\Work\Word_stat\CSV\ENCODING_TIME.txt'

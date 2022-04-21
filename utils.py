@@ -40,12 +40,8 @@ def get_words_dict(line):
     :return: Словарь
     """
     word_dict = defaultdict(int)
-    processed_line = copy.copy(line)
-    word_match = re.search(r"\w+", processed_line)
-    while word_match:
-        word = processed_line[word_match.start():word_match.end()]
+    word_match = re.findall(r"\w+", line)
+    for word in word_match:
         if word in rus_words_set:
             word_dict[word] += 1
-        processed_line = processed_line[word_match.end():]
-        word_match = re.search(r"\w+", processed_line)
     return word_dict
