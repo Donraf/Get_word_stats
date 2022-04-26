@@ -17,7 +17,7 @@ file_counter = 0
 while len(docs_list) > 0:
     start_file_proc = time.time()
 
-    if len(docs_list) >= 100:
+    if len(docs_list) >= BATCH_SIZE:
         docs_batch = docs_list[:BATCH_SIZE]
         docs_list = docs_list[BATCH_SIZE:]
     else:
